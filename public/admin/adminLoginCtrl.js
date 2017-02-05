@@ -1,15 +1,15 @@
 angular.module('app').controller('adminLoginCtrl', 
-    function($location, currentIdentity, auth, toastr, $scope) {
+    function($location, currentIdentity, auth, toastr) {
   
-  $scope.loggedIn = currentIdentity.authenticated();
-  if($scope.loggedIn) {
+  this.loggedIn = currentIdentity.authenticated();
+  if(this.loggedIn) {
     $location.path('/home');
   }
   
-  $scope.login = function() {
+  this.login = function() {
     auth.login({
-      username: $scope.email,
-      password: $scope.password
+      username: this.email,
+      password: this.password
     }).then(function() {
       $location.path('/home');
     }, function(err) {
