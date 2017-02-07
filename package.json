@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./server/server.js",
     "dev": "nodemon ./server/server.js -w ./server",
-    "test": "karma start"
+    "test": "karma start",
+    "tsc": "tsc -p . -w"
   },
   "keywords": [],
   "author": "joe eames",
