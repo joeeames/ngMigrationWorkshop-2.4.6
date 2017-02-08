@@ -20,7 +20,7 @@ export class ProfileComponent {
     
       
   save(newProfile) {
-    // this.currentIdentity.updateUser(newProfile);
+    this.currentIdentity.updateUser(newProfile);
     toastr.success('Profile Saved!');
   }
   
