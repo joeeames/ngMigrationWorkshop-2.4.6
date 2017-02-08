@@ -7,14 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { UpgradeAdapter, UpgradeAdapterRef } from '@angular/upgrade';
-
-// This is really strange. But you need the module when you create 
-// the upgrade adapter, but you also need the created upgrade adapter
-// when creating the Module (see below, the call to upgradeNg1Component)
-// so we use a forwardRef, and we have to put the upgradeAdapter and the 
-// module in the same file
-export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
+import { NameParser } from './admin/nameParser.service';
 
 @NgModule({
   imports: [
@@ -29,7 +22,7 @@ export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
     
   ],
   providers: [
-    
+    NameParser
   ],
   bootstrap: [
     AppComponent
