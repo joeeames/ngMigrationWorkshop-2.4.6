@@ -1,4 +1,4 @@
-import { NgModule, forwardRef }      from '@angular/core';
+import { NgModule, forwardRef, OpaqueToken }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
@@ -11,6 +11,10 @@ import { NameParser } from './admin/nameParser.service';
 import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
 import { TalkDurationPipe } from './common/talkDuration.pipe';
 import { ProfileComponent } from './profile/profile.component';
+import { TOASTR_TOKEN, Toastr } from './toastr/toastr.service';
+
+
+declare var toastr: Toastr;
 
 @NgModule({
   imports: [
@@ -27,7 +31,14 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent
   ],
   providers: [
-    NameParser
+    NameParser,
+    { provide: '$location',
+      useFactory: (i: any) => i.get('$location'),
+      deps: ['$injector'] },
+    { provide: 'currentIdentity',
+      useFactory: (i: any) => i.get('currentIdentity'),
+      deps: ['$injector'] },
+    { provide: TOASTR_TOKEN, useValue: toastr }
   ],
   bootstrap: [
     AppComponent
