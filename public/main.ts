@@ -4,6 +4,7 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';
 import { NameParser } from './admin/nameParser.service';
 import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // this is done to make sure that typescript knows about all the rxjs operations
 import './rxjsOperations';
@@ -18,6 +19,9 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
         component: UnreviewedTalkComponent,
         inputs: ['session'],
         outputs: ['voteYes', 'voteNo']
+    }))
+    .directive('profile', downgradeComponent({
+        component: ProfileComponent
     }))
 
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
