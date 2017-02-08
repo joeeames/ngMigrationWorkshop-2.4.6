@@ -12,7 +12,7 @@ import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
 import { TalkDurationPipe } from './common/talkDuration.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { TOASTR_TOKEN, Toastr } from './toastr/toastr.service';
-
+import { NavComponent } from './nav/nav.component';
 
 declare var toastr: Toastr;
 
@@ -28,7 +28,8 @@ declare var toastr: Toastr;
     AppComponent,
     UnreviewedTalkComponent,
     TalkDurationPipe,
-    ProfileComponent
+    ProfileComponent,
+    NavComponent
   ],
   providers: [
     NameParser,
