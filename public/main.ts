@@ -6,6 +6,7 @@ import { NameParser } from './admin/nameParser.service';
 import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Sessions } from './sessions/sessions.service';
+import { DetailPanelComponent } from './common/detailPanel.component';
 
 // this is done to make sure that typescript knows about all the rxjs operations
 import './rxjsOperations';
@@ -24,6 +25,10 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     }))
     .directive('profile', downgradeComponent({
         component: ProfileComponent
+    }))
+    .directive('detailPanel', downgradeComponent({
+      component: DetailPanelComponent,
+      inputs: ['initialCollapsed', 'title']
     }))
 
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;

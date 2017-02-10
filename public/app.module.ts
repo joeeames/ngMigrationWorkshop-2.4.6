@@ -15,6 +15,7 @@ import { TOASTR_TOKEN, Toastr } from './toastr/toastr.service';
 import { NavComponent } from './nav/nav.component';
 import { NavWrapperComponent } from './nav/nav-wrapper.component';
 import { Sessions } from './sessions/sessions.service';
+import { DetailPanelComponent } from './common/detailPanel.component';
 
 declare var toastr: Toastr;
 
@@ -32,7 +33,8 @@ declare var toastr: Toastr;
     TalkDurationPipe,
     ProfileComponent,
     NavWrapperComponent,
-    NavComponent
+    NavComponent,
+    DetailPanelComponent
   ],
   providers: [
     NameParser,
@@ -50,7 +52,8 @@ declare var toastr: Toastr;
   ],
   entryComponents: [
     UnreviewedTalkComponent,
-    ProfileComponent
+    ProfileComponent,
+    DetailPanelComponent
   ]
 })
 export class AppModule { }
