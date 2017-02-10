@@ -28,7 +28,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     }))
     .directive('detailPanel', downgradeComponent({
       component: DetailPanelComponent,
-      inputs: ['initialCollapsed', 'title']
+      inputs: ['initialCollapsed:collapsed', 'title']
     }))
 
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;

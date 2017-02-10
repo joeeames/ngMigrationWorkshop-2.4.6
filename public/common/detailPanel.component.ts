@@ -6,7 +6,7 @@ import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DetailPanelComponent {
   @Input() title: string;
-  @Input() initialCollapsed;
+  @Input('collapsed') initialCollapsed;
   collapsed: boolean;
 
   ngOnChanges() {
