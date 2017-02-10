@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TOASTR_TOKEN, Toastr } from './toastr/toastr.service';
 import { NavComponent } from './nav/nav.component';
 import { NavWrapperComponent } from './nav/nav-wrapper.component';
+import { Sessions } from './sessions/sessions.service';
 
 declare var toastr: Toastr;
 
@@ -35,6 +36,7 @@ declare var toastr: Toastr;
   ],
   providers: [
     NameParser,
+    Sessions,
     { provide: '$location',
       useFactory: (i: any) => i.get('$location'),
       deps: ['$injector'] },

@@ -5,6 +5,7 @@ import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static
 import { NameParser } from './admin/nameParser.service';
 import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
 import { ProfileComponent } from './profile/profile.component';
+import { Sessions } from './sessions/sessions.service';
 
 // this is done to make sure that typescript knows about all the rxjs operations
 import './rxjsOperations';
@@ -15,6 +16,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
   // upgrades & downgrades
   angular.module('app')
     .factory('nameParser', downgradeInjectable(NameParser))
+    .factory('sessions_v2', downgradeInjectable(Sessions))
     .directive('unreviewedTalk', downgradeComponent({
         component: UnreviewedTalkComponent,
         inputs: ['session'],
