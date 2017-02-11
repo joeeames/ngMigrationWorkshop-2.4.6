@@ -16,6 +16,8 @@ import { NavComponent } from './nav/nav.component';
 import { NavWrapperComponent } from './nav/nav-wrapper.component';
 import { Sessions } from './sessions/sessions.service';
 import { DetailPanelComponent } from './common/detailPanel.component';
+import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
+import { ResultsComponent } from './admin/results.component';
 
 declare var toastr: Toastr;
 
@@ -34,7 +36,9 @@ declare var toastr: Toastr;
     ProfileComponent,
     NavWrapperComponent,
     NavComponent,
-    DetailPanelComponent
+    DetailPanelComponent,
+    ResultsComponent,
+    SessionDetailWithVotesComponent
   ],
   providers: [
     NameParser,
@@ -53,7 +57,8 @@ declare var toastr: Toastr;
   entryComponents: [
     UnreviewedTalkComponent,
     ProfileComponent,
-    DetailPanelComponent
+    DetailPanelComponent,
+    ResultsComponent
   ]
 })
 export class AppModule { }

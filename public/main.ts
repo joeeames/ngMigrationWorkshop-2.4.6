@@ -7,6 +7,7 @@ import { UnreviewedTalkComponent  } from './home/unreviewedTalk.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Sessions } from './sessions/sessions.service';
 import { DetailPanelComponent } from './common/detailPanel.component';
+import { ResultsComponent } from './admin/results.component';
 
 // this is done to make sure that typescript knows about all the rxjs operations
 import './rxjsOperations';
@@ -29,6 +30,10 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
     .directive('detailPanel', downgradeComponent({
       component: DetailPanelComponent,
       inputs: ['initialCollapsed:collapsed', 'title']
+    }))
+    .directive('results', downgradeComponent({
+      component: ResultsComponent,
+      inputs: ['sessionsByVoteDesc:allSessions']
     }))
 
   const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
