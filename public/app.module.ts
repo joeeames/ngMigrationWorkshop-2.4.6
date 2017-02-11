@@ -1,7 +1,7 @@
 import { NgModule, forwardRef, OpaqueToken }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { RouterModule }   from '@angular/router';
+import { RouterModule, UrlHandlingStrategy }   from '@angular/router';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { HttpModule } from '@angular/http';
 
@@ -18,16 +18,25 @@ import { Sessions } from './sessions/sessions.service';
 import { DetailPanelComponent } from './common/detailPanel.component';
 import { SessionDetailWithVotesComponent } from './sessions/sessionDetailWithVotes.component';
 import { ResultsComponent } from './admin/results.component';
+import { AllSessionsResolver } from './sessions/allSessions.resolver';
 
 declare var toastr: Toastr;
+
+class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
+  shouldProcessUrl(url) { console.log('match', url.toString().startsWith("/admin/results"), url.toString()); return url.toString().startsWith("/admin/results"); }
+  extract(url) { return url; }
+  merge(url, whole) { return url; }
+}
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    UpgradeModule
-    // RouterModule.forRoot([], {useHash: true})
+    UpgradeModule,
+    RouterModule.forRoot([
+      { path: 'admin/results', component: ResultsComponent, resolve: { sessions: AllSessionsResolver} },
+    ], {useHash: true})
   ],
   declarations: [
     AppComponent,
@@ -49,7 +58,10 @@ declare var toastr: Toastr;
     { provide: 'currentIdentity',
       useFactory: (i: any) => i.get('currentIdentity'),
       deps: ['$injector'] },
-    { provide: TOASTR_TOKEN, useValue: toastr }
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
+    { provide: '$scope', useExisting: '$rootScope' }, // I have to do this cause we do not provide $scope in the module. Seems to be broken.
+    AllSessionsResolver
   ],
   bootstrap: [
     AppComponent
@@ -57,8 +69,8 @@ declare var toastr: Toastr;
   entryComponents: [
     UnreviewedTalkComponent,
     ProfileComponent,
-    DetailPanelComponent,
-    ResultsComponent
+    DetailPanelComponent
+    // ResultsComponent
   ]
 })
 export class AppModule { }

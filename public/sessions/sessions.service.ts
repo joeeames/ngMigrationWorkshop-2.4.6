@@ -16,16 +16,12 @@ export class Sessions {
       .toPromise();
   }
   
-  // getAllSessions() {
-  //   var dfd = this.$q.defer();
-    
-  //   this.$http.get('/api/sessions').then(function(response) {
-  //     dfd.resolve(response.data);
-  //   }, function() {
-  //     dfd.reject();
-  //   });
-  //   return dfd.promise;
-  // }
+  getAllSessions() {
+    return this.http.get('/api/sessions/')
+      .map((rsp: Response) => {
+        return <any>rsp.json(); 
+      });
+  }
   
   // createNewSession(newSession) {
   //   return this.$http.post('/api/sessions', newSession);
