@@ -3,6 +3,6 @@ npm install
 npm start
 
 URL's
-https://docs.google.com/document/d/1XF5vMFVs8PKkBZ7MDXu236EbL5M9Rzkg3aAmGjnY3GA/edit?usp=sharing
+https://docs.google.com/document/d/1XTSs8l0rt_pPtxKOGxdBBw4KdVCNoj80upvvXra05lI/edit?usp=sharing
 
-https://dl.dropboxusercontent.com/u/39008480/workshops/ngVikings-Migrating.pptx
+https://www.dropbox.com/s/wvkvwl4kwlwcrhd/ngConf-Migrating.pptx?dl=0
